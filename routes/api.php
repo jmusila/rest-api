@@ -13,21 +13,21 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['prefix' => 'api/v1'], function(){
+Route::group(['prefix' => '/v1'], function(){
 
-    Route::resource('/meeting', 'MeetingController', [
+    Route::resource('meeting', 'MeetingController', [
         'except'=>['edit', 'create']
     ]);
 
-    Route::resource('/meeting/registration', 'RegistrationController', [
+    Route::resource('meeting/registration', 'RegistrationController', [
         'only'=>['store', 'destroy']
     ]);
 
-    Route::post('/user', [
+    Route::post('user', [
         'uses' => 'AuthController@Store'
     ]);
 
-    Route::('/user/signin', [
+    Route::post('user/signin', [
         'uses' => 'AuthController@signin'
     ] );
 });
